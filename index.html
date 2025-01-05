@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Dados - ¡El Más Grande Gana!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f9;
+      color: #333;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .dice-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .dice {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: bold;
+      background-color: #fff;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Juego de Dados - ¡El Más Grande Gana!</h1>
+  <div class="dice-container">
+    <div id="player1-dice" class="dice">🎲</div>
+    <div id="player2-dice" class="dice">🎲</div>
+  </div>
+  <button id="roll-btn">Girar</button>
+  <div id="result" class="result"></div>
+
+  <script>
+    const player1Dice = document.getElementById('player1-dice');
+    const player2Dice = document.getElementById('player2-dice');
+    const result = document.getElementById('result');
+    const rollBtn = document.getElementById('roll-btn');
+
+    rollBtn.addEventListener('click', () => {
+      // Generate random numbers for both dice
+      const player1Roll = Math.floor(Math.random() * 6) + 1;
+      const player2Roll = Math.floor(Math.random() * 6) + 1;
+
+      // Update the dice display
+      player1Dice.textContent = player1Roll;
+      player2Dice.textContent = player2Roll;
+
+      // Determine the winner
+      if (player1Roll > player2Roll) {
+        result.textContent = 'Jugador 1 Wins! 🎉';
+      } else if (player2Roll > player1Roll) {
+        result.textContent = 'Jugador 2 Wins! 🎉';
+      } else {
+        result.textContent = "Empate! 🤝";
+      }
+    });
+  </script>
+</body>
+</html>
